@@ -10,7 +10,6 @@ namespace api.Data
         {
         }
 
-        // këtu do i shtojmë tabelat më vonë
         public DbSet<Product> Products { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
