@@ -1,4 +1,4 @@
-namespace BoutiqueApi.DTOs.Product
+namespace api.DTOs.Product
 {
     public class ProductDto
     {
