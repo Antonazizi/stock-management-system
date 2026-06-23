@@ -9,5 +9,7 @@ namespace api.Models
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime Date { get; set; }
+        public Product Product { get; set; }
+        public Employee Employee { get; set; }
     }
 }
