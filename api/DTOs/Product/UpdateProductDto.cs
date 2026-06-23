@@ -1,8 +1,7 @@
-namespace api.Models
+namespace api.DTOs.Product
 {
-    public class Product
+    public class UpdateProductDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
         public string Type { get; set; }
@@ -11,7 +10,5 @@ namespace api.Models
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public int MinStockLevel { get; set; }
-
-        public ICollection<Transaction> Transactions { get; set; }
     }
 }

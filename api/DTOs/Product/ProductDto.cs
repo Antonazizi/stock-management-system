@@ -1,6 +1,6 @@
-namespace api.Models
+namespace api.DTOs.Product
 {
-    public class Product
+    public class ProductDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,8 +10,5 @@ namespace api.Models
         public string Color { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public int MinStockLevel { get; set; }
-
-        public ICollection<Transaction> Transactions { get; set; }
     }
 }
