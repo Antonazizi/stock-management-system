@@ -11,5 +11,7 @@ namespace api.Models
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public int MinStockLevel { get; set; }
+
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }
