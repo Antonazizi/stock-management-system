@@ -17,11 +17,15 @@ namespace api.Services
         public async Task<IEnumerable<TransactionDto>> GetAllAsync()
         {
             return await _context.Transactions
+                .Include(t => t.Product)
+                .Include(t => t.Employee)
                 .Select(t => new TransactionDto
                 {
                     Id = t.Id,
                     ProductId = t.ProductId,
+                    ProductName = t.Product.Name,
                     EmployeeId = t.EmployeeId,
+                    EmployeeName = t.Employee.Name,
                     Type = t.Type,
                     Quantity = t.Quantity,
                     TotalPrice = t.TotalPrice,
@@ -57,10 +61,12 @@ namespace api.Services
             return new TransactionDto
             {
                 Id = transaction.Id,
-                ProductId = transaction.ProductId,
-                EmployeeId = transaction.EmployeeId,
-                Quantity = transaction.Quantity,
+                ProductId = product.Id,
+                ProductName = product.Name,
+                EmployeeId = dto.EmployeeId,
+                EmployeeName = (await _context.Employees.FindAsync(dto.EmployeeId))?.Name,
                 Type = transaction.Type,
+                Quantity = transaction.Quantity,
                 TotalPrice = transaction.TotalPrice,
                 Date = transaction.Date
             };
@@ -96,10 +102,12 @@ namespace api.Services
             return new TransactionDto
             {
                 Id = transaction.Id,
-                ProductId = transaction.ProductId,
-                EmployeeId = transaction.EmployeeId,
-                Quantity = transaction.Quantity,
+                ProductId = product.Id,
+                ProductName = product.Name,
+                EmployeeId = dto.EmployeeId,
+                EmployeeName = (await _context.Employees.FindAsync(dto.EmployeeId))?.Name,
                 Type = transaction.Type,
+                Quantity = transaction.Quantity,
                 TotalPrice = transaction.TotalPrice,
                 Date = transaction.Date
             };
