@@ -22,5 +22,37 @@ namespace api.Controllers
             var data = await _dashboardService.GetDashboardAsync();
             return Ok(data);
         }
+
+        [HttpGet("low-stock-products")]
+        public async Task<IActionResult> GetLowStockProducts()
+        {
+            var result = await _dashboardService.GetLowStockProductsAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("top-selling-products")]
+        public async Task<IActionResult> GetTopSellingProducts()
+        {
+            var result = await _dashboardService.GetTopSellingProductsAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("monthly-sales")]
+        public async Task<IActionResult> GetMonthlySales()
+        {
+            var result = await _dashboardService.GetMonthlySalesAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("recent-transactions")]
+        public async Task<IActionResult> GetRecentTransactions()
+        {
+            var result = await _dashboardService.GetRecentTransactionsAsync();
+
+            return Ok(result);
+        }
     }
 }
