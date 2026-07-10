@@ -4,6 +4,7 @@ using api.Models;
 using Microsoft.EntityFrameworkCore;
 using api.Services.Interfaces;
 using api.DTOs.Product;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
@@ -18,6 +19,7 @@ namespace api.Controllers
             _productService = productService;
         }
 
+        [Authorize(Roles = "Admin,Worker")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
         {
@@ -25,13 +27,15 @@ namespace api.Controllers
             return Ok(products);
         }
 
+        [Authorize(Roles = "Admin,Worker")]
         [HttpPost]
         public async Task<ActionResult<ProductDto>> AddProduct(CreateProductDto product)
         {
             var createdProduct = await _productService.CreateAsync(product);
             return Ok(createdProduct);
         }
-
+    
+        [Authorize(Roles = "Admin,Worker")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(int id, UpdateProductDto product)
         {
@@ -43,6 +47,7 @@ namespace api.Controllers
             return Ok(updatedProduct);
         }
 
+        [Authorize(Roles = "Admin,Worker")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

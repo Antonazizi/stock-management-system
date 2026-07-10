@@ -1,6 +1,8 @@
 using api.DTOs.Auth;
 using api.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace api.Controllers
 {
@@ -37,6 +39,17 @@ namespace api.Controllers
             return Ok(new
             {
                 token
+            });
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public IActionResult Me()
+        {
+            return Ok(new
+            {
+                Username = User.FindFirst(ClaimTypes.Name)?.Value,
+                Role = User.FindFirst(ClaimTypes.Role)?.Value
             });
         }
     }
