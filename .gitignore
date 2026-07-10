@@ -1,0 +1,11 @@
+api/[Dd]ebug/
+api/[Rr]elease/
+api/[Bb]in/
+api/[Oo]bj/
+
+.vscode/
+.history/
+
+api/appsettings.Development.json
+
+.DS_Store
