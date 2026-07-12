@@ -1,52 +1,49 @@
-import { useEffect, useState } from "react";
-import { getCurrentUser } from "../api/authApi";
-
 export default function Dashboard() {
 
-    const [user, setUser] = useState(null);
+  return (
 
-    useEffect(() => {
-        loadUser();
-    }, []);
+    <div>
 
-    const loadUser = async () => {
+      <h1
+        className="mb-6 text-3xl font-bold "
+      >
+        Dashboard
+      </h1>
 
-        try {
-            const data = await getCurrentUser();
-            setUser(data);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    };
+      <div
+        className="grid grid-cols-4 gap-6 "
+      >
 
-    return (
-
-        <div>
-
-            <h1 className="text-3xl font-bold">
-                Dashboard
-            </h1>
-
-            {user && (
-
-                <div className="mt-6">
-
-                    <p>
-                        Username:
-                        {user.username}
-                    </p>
-
-                    <p>
-                        Role:
-                        {user.role}
-                    </p>
-
-                </div>
-
-            )}
-
+        <div className="p-5 bg-white shadow rounded-xl">
+          <h3>Total Products</h3>
+          <p className="text-3xl font-bold">
+            0
+          </p>
         </div>
 
-    );
+        <div className="p-5 bg-white shadow rounded-xl">
+          <h3>Categories</h3>
+          <p className="text-3xl font-bold">
+            0
+          </p>
+        </div>
+
+        <div className="p-5 bg-white shadow rounded-xl">
+          <h3>Low Stock</h3>
+          <p className="text-3xl font-bold">
+            0
+          </p>
+        </div>
+
+        <div className="p-5 bg-white shadow rounded-xl">
+          <h3>Users</h3>
+          <p className="text-3xl font-bold">
+            0
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  );
 }

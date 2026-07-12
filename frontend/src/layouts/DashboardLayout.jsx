@@ -1,21 +1,27 @@
 import { Outlet } from "react-router-dom";
 
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+
 export default function DashboardLayout() {
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="flex">
 
-        <aside className="w-64 bg-white border-r min-h-screen p-4">
-          <h2 className="text-xl font-bold">
-            Stock Management
-          </h2>
-        </aside>
+    <div className="flex bg-slate-100">
 
-        <main className="flex-1 p-6">
+      <Sidebar />
+
+      <div className="flex-1">
+
+        <Navbar />
+
+        <main className="p-6">
           <Outlet />
         </main>
 
       </div>
+
     </div>
+
   );
 }
